@@ -54,12 +54,12 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
         private bool m_IsHost = false;
 
         /// <summary>
-        /// Indicates whether an attempt to resolve the Cloud Reference Point should be made.
+        /// Indicates whether an attempt to resolve the Cloud Anchor should be made.
         /// </summary>
         private bool m_ShouldResolve = false;
 
         /// <summary>
-        /// Indicates whether to chekc Cloud Reference Point state and update the anchor.
+        /// Indicates whether to chekc Cloud Anchor state and update the anchor.
         /// </summary>
         private bool m_ShouldUpdatePoint = false;
 
@@ -83,7 +83,7 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
         private GameObject m_AnchorMesh;
 
         /// <summary>
-        /// The Cloud Reference Point created locally which is used to moniter whether the
+        /// The Cloud Anchor created locally which is used to moniter whether the
         /// hosting or resolving process finished.
         /// </summary>
         private ARCloudAnchor m_CloudAnchor;
@@ -94,7 +94,7 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
         private CloudAnchorsExampleController m_CloudAnchorsExampleController;
 
         /// <summary>
-        /// The AR Reference Point Manager in the scene, used to host or resolve a Cloud Reference
+        /// The AR Anchor Manager in the scene, used to host or resolve a Cloud Reference
         /// Point.
         /// </summary>
         private ARAnchorManager m_AnchorManager;
@@ -197,9 +197,9 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
                     m_AnchorManager, anchor);
             if (m_CloudAnchor == null)
             {
-                Debug.LogError("Failed to add Cloud Reference Point.");
+                Debug.LogError("Failed to add Cloud Anchor.");
                 m_CloudAnchorsExampleController.OnAnchorHosted(
-                    false, "Failed to add Cloud Reference Point.");
+                    false, "Failed to add Cloud Anchor.");
                 m_ShouldUpdatePoint = false;
             }
             else
@@ -209,7 +209,7 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
         }
 
         /// <summary>
-        /// Resolves the cloud reference Id and instantiate a Cloud Reference Point on it.
+        /// Resolves the cloud reference Id and instantiate a Cloud Anchor on it.
         /// </summary>
         /// <param name="cloudReferenceId">The cloud reference Id to be resolved.</param>
         private void _ResolveAnchorId(string cloudReferenceId)
@@ -220,10 +220,10 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
                     m_AnchorManager, cloudReferenceId);
             if (m_CloudAnchor == null)
             {
-                Debug.LogErrorFormat("Client could not resolve Cloud Reference Point {0}.",
+                Debug.LogErrorFormat("Client could not resolve Cloud Anchor {0}.",
                     cloudReferenceId);
                 m_CloudAnchorsExampleController.OnAnchorResolved(
-                    false, "Client could not resolve Cloud Reference Point.");
+                    false, "Client could not resolve Cloud Anchor.");
                 m_ShouldResolve = true;
                 m_ShouldUpdatePoint = false;
             }
@@ -235,13 +235,13 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
         }
 
         /// <summary>
-        /// Update the anchor if hosting Cloud Reference Point is success.
+        /// Update the anchor if hosting Cloud Anchor is success.
         /// </summary>
         private void _UpdateHostedCloudAnchor()
         {
             if (m_CloudAnchor == null)
             {
-                Debug.LogError("No Cloud Reference Point.");
+                Debug.LogError("No Cloud Anchor.");
                 return;
             }
 
@@ -251,25 +251,25 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
             {
                 CmdSetCloudReferenceId(m_CloudAnchor.cloudReferenceId);
                 m_CloudAnchorsExampleController.OnAnchorHosted(
-                    true, "Successfully hosted Cloud Reference Point.");
+                    true, "Successfully hosted Cloud Anchor.");
                 m_ShouldUpdatePoint = false;
             }
             else if (cloudAnchorState != CloudAnchorState.TaskInProgress)
             {
                 m_CloudAnchorsExampleController.OnAnchorHosted(false,
-                    "Fail to host Cloud Reference Point with state: " + cloudAnchorState);
+                    "Fail to host Cloud Anchor with state: " + cloudAnchorState);
                 m_ShouldUpdatePoint = false;
             }
         }
 
         /// <summary>
-        /// Update the anchor if resolving Cloud Reference Point is success.
+        /// Update the anchor if resolving Cloud Anchor is success.
         /// </summary>
         private void _UpdateResolvedCloudAnchor()
         {
             if (m_CloudAnchor == null)
             {
-                Debug.LogError("No Cloud Reference Point.");
+                Debug.LogError("No Cloud Anchor.");
                 return;
             }
 
@@ -280,7 +280,7 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
                 transform.SetParent(m_CloudAnchor.transform, false);
                 m_CloudAnchorsExampleController.OnAnchorResolved(
                     true,
-                    "Successfully resolved Cloud Reference Point.");
+                    "Successfully resolved Cloud Anchor.");
                 m_CloudAnchorsExampleController.WorldOrigin = transform;
                 m_AnchorMesh.SetActive(true);
 
@@ -292,7 +292,7 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
             {
                 m_CloudAnchorsExampleController.OnAnchorResolved(
                     false,
-                    "Fail to resolve Cloud Reference Point with state: " + cloudAnchorState);
+                    "Fail to resolve Cloud Anchor with state: " + cloudAnchorState);
                 m_ShouldUpdatePoint = false;
             }
         }

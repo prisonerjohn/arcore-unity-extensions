@@ -31,19 +31,19 @@ namespace Google.XR.ARCoreExtensions
         None,
 
         /// <summary>
-        /// A hosting or resolving task is in progress for this Reference Point.
-        /// Once the task completes in the background, the Reference Point will get
+        /// A hosting or resolving task is in progress for this Anchor.
+        /// Once the task completes in the background, the Anchor will get
         /// a new state after the next update.
         /// </summary>
         TaskInProgress,
 
         /// <summary>
-        /// A hosting or resolving task for this Reference Point has completed successfully.
+        /// A hosting or resolving task for this Anchor has completed successfully.
         /// </summary>
         Success,
 
         /// <summary>
-        /// A hosting or resolving task for this Reference Point has completed with an
+        /// A hosting or resolving task for this Anchor has completed with an
         /// internal error. The app should not attempt to recover from this error.
         /// </summary>
         ErrorInternal,
@@ -63,7 +63,7 @@ namespace Google.XR.ARCoreExtensions
 
         /// <summary>
         /// Hosting failed because the server could not successfully process the dataset for
-        /// the given Reference Point. The developer should try again after the devices has
+        /// the given Anchor. The developer should try again after the devices has
         /// gathered more data from the environment.
         /// </summary>
         ErrorHostingDatasetProcessingFailed,
@@ -75,14 +75,14 @@ namespace Google.XR.ARCoreExtensions
         ErrorResolvingCloudIdNotFound,
 
         /// <summary>
-        /// The Reference Point could not be resolved because the ARCore Extensions package
+        /// The Anchor could not be resolved because the ARCore Extensions package
         /// used to host the Cloud Anchor was newer than and incompatible with the version
         /// being used to acquire it.
         /// </summary>
         ErrorResolvingPackageTooOld,
 
         /// <summary>
-        /// The Reference Point could not be acquired because the ARCore Extensions package
+        /// The Anchor could not be acquired because the ARCore Extensions package
         /// used to host the Cloud Anchor was older than and incompatible with the version
         /// being used to acquire it.
         /// </summary>

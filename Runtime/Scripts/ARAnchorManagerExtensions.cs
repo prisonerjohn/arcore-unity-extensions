@@ -34,7 +34,7 @@ namespace Google.XR.ARCoreExtensions
         private static readonly string k_GameObjectName = "ARCloudAnchor";
 
         /// <summary>
-        /// Creates a new cloud anchor using an existing local Reference Point.
+        /// Creates a new cloud anchor using an existing local Anchor.
         /// <example>
         /// The sample code below illustrates how to host a cloud anchor.
         /// <code>
@@ -42,8 +42,8 @@ namespace Google.XR.ARCoreExtensions
         ///
         /// void HostCloudReference(Pose pose)
         /// {
-        ///     // Create a local Reference Point, you may also use another
-        ///     // Reference Point you may already have.
+        ///     // Create a local Anchor, you may also use another
+        ///     // Anchor you may already have.
         ///     ARAnchor localAnchor =
         ///         AnchorManager.AddAnchor(pose);
         ///

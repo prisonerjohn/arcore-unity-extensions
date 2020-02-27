@@ -54,7 +54,7 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
         public GameObject ARExtentions;
 
         /// <summary>
-        /// The active AR Reference Point Manager used in the example.
+        /// The active AR Anchor Manager used in the example.
         /// </summary>
         public ARAnchorManager AnchorManager;
 
