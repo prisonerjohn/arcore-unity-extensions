@@ -56,7 +56,7 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
         /// <summary>
         /// The active AR Reference Point Manager used in the example.
         /// </summary>
-        public ARReferencePointManager ReferencePointManager;
+        public ARAnchorManager AnchorManager;
 
         /// <summary>
         /// The active AR Raycast Manager used in the example.
@@ -326,10 +326,10 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
                 }
                 else if (!IsOriginPlaced && m_CurrentMode == ApplicationMode.Hosting)
                 {
-                    ARReferencePoint referencePoint =
-                        ReferencePointManager.AddReferencePoint(hitResults[0].pose);
-                    WorldOrigin = referencePoint.transform;
-                    _InstantiateAnchor(referencePoint);
+                    ARAnchor anchor =
+                        AnchorManager.AddAnchor(hitResults[0].pose);
+                    WorldOrigin = anchor.transform;
+                    _InstantiateAnchor(anchor);
                     OnAnchorInstantiated(true);
                 }
             }
@@ -505,15 +505,15 @@ namespace Google.XR.ARCoreExtensions.Samples.CloudAnchors
         }
 
         /// <summary>
-        /// Instantiates the anchor object at the pose of the m_WorldOriginReferencePoint Anchor. 
+        /// Instantiates the anchor object at the pose of the m_WorldOriginAnchor Anchor. 
         /// This will host the Cloud Anchor.
         /// </summary>
-        /// <param name="referencePoint">The reference point holding the anchor.</param>
-        private void _InstantiateAnchor(ARReferencePoint referencePoint)
+        /// <param name="anchor">The anchor holding the anchor.</param>
+        private void _InstantiateAnchor(ARAnchor anchor)
         {
             // The anchor will be spawned by the host, so no networking Command is needed.
             GameObject.Find("LocalPlayer").GetComponent<LocalPlayerController>()
-                .SpawnAnchor(referencePoint);
+                .SpawnAnchor(anchor);
         }
 
         /// <summary>

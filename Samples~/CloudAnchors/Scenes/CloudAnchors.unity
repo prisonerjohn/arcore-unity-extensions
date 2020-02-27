@@ -78,7 +78,7 @@ LightmapSettings:
     m_PVRSampleCount: 500
     m_PVRBounces: 2
     m_PVREnvironmentSampleCount: 500
-    m_PVREnvironmentReferencePointCount: 2048
+    m_PVREnvironmentAnchorCount: 2048
     m_PVRFilteringMode: 2
     m_PVRDenoiserTypeDirect: 0
     m_PVRDenoiserTypeIndirect: 0
@@ -660,7 +660,7 @@ MonoBehaviour:
   SessionOrigin: {fileID: 1321540051}
   SessionCore: {fileID: 1457490596}
   ARExtentions: {fileID: 1647151349}
-  ReferencePointManager: {fileID: 1321540048}
+  AnchorManager: {fileID: 1321540048}
   RaycastManager: {fileID: 1321540047}
   NetworkUIController: {fileID: 1077067569}
   LobbyScreen: {fileID: 476493625}
@@ -2669,7 +2669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 728ad7fae8e460a4ba41265c7308d757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ReferencePointPrefab: {fileID: 0}
+  m_AnchorPrefab: {fileID: 0}
 --- !u!114 &1321540049
 MonoBehaviour:
   m_ObjectHideFlags: 0

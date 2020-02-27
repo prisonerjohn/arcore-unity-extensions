@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="ARCloudReferencePoint.cs" company="Google">
+// <copyright file="ARCloudAnchor.cs" company="Google">
 //
 // Copyright 2019 Google LLC. All Rights Reserved.
 //
@@ -27,25 +27,25 @@ namespace Google.XR.ARCoreExtensions
     using UnityEngine.XR.ARSubsystems;
 
     /// <summary>
-    /// The <c>ARCloudReferencePoint</c> is an ARCore Extensions object that provides a
-    /// similar service to AR Foundations <c>ARReferencePoint</c> as an anchor for
+    /// The <c>ARCloudAnchor</c> is an ARCore Extensions object that provides a
+    /// similar service to AR Foundations <c>ARAnchor</c> as an anchor for
     /// game objects in your scene. It is backed by an ARCore Cloud Anchor to synchronize
     /// pose data across multiple devices.
     /// </summary>
     [SuppressMessage("UnityRules.UnityStyleRules", "US1000:FieldsMustBeUpperCamelCase",
      Justification = "Match Unity's naming style.")]
-    public class ARCloudReferencePoint : MonoBehaviour, ITrackable
+    public class ARCloudAnchor : MonoBehaviour, ITrackable
     {
         internal IntPtr m_AnchorHandle;
         private Pose m_Pose;
 
         /// <summary>
-        /// Gets the Cloud Reference Id associated with this cloud reference point. For newly
-        /// created points the Id will be an empty string until the cloud reference point is
-        /// in the <see cref="CloudReferenceState"/>.<c>Success</c> state. This Id is
-        /// provided on the device hosting the cloud reference point, and is used to resolve
-        /// a corresponding cloud reference point on other devices.
-        /// See <see cref="ARReferencePointManagerExtensions.ResolveCloudReferencePoint()"/>
+        /// Gets the Cloud Reference Id associated with this cloud anchor. For newly
+        /// created points the Id will be an empty string until the cloud anchor is
+        /// in the <see cref="CloudAnchorState"/>.<c>Success</c> state. This Id is
+        /// provided on the device hosting the cloud anchor, and is used to resolve
+        /// a corresponding cloud anchor on other devices.
+        /// See <see cref="ARAnchorManagerExtensions.ResolveCloudAnchor()"/>
         /// for more information.
         /// </summary>
         public string cloudReferenceId
@@ -59,13 +59,13 @@ namespace Google.XR.ARCoreExtensions
         }
 
         /// <summary>
-        /// Gets the <see cref="CloudReferenceState"/> associated with cloud reference point.
+        /// Gets the <see cref="CloudAnchorState"/> associated with cloud anchor.
         /// </summary>
-        public CloudReferenceState cloudReferenceState
+        public CloudAnchorState cloudAnchorState
         {
             get
             {
-                return Translators.ToCloudReferenceState(
+                return Translators.ToCloudAnchorState(
                     AnchorApi.GetCloudAnchorState(
                         ARCoreExtensions.Instance.CurrentARCoreSessionHandle,
                         m_AnchorHandle));
@@ -73,7 +73,7 @@ namespace Google.XR.ARCoreExtensions
         }
 
         /// <summary>
-        /// Gets the <c>TrackableId</c> associated with this cloud reference point.
+        /// Gets the <c>TrackableId</c> associated with this cloud anchor.
         /// </summary>
         public TrackableId trackableId
         {
@@ -84,7 +84,7 @@ namespace Google.XR.ARCoreExtensions
         }
 
         /// <summary>
-        /// Gets the <c>Pose</c> associated with this cloud reference point.
+        /// Gets the <c>Pose</c> associated with this cloud anchor.
         /// </summary>
         public Pose pose
         {
@@ -95,7 +95,7 @@ namespace Google.XR.ARCoreExtensions
         }
 
         /// <summary>
-        /// Gets the <c>TrackingState</c> associated with this cloud reference point.
+        /// Gets the <c>TrackingState</c> associated with this cloud anchor.
         /// </summary>
         public TrackingState trackingState
         {
@@ -119,7 +119,7 @@ namespace Google.XR.ARCoreExtensions
                 m_AnchorHandle);
             m_Pose = Translators.ToUnityPose(apiPose);
 
-            // Update the cloud reference point transform to match.
+            // Update the cloud anchor transform to match.
             transform.localPosition = m_Pose.position;
             transform.localRotation = m_Pose.rotation;
         }

@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------
-// <copyright file="CloudReferenceState.cs" company="Google">
+// <copyright file="CloudAnchorState.cs" company="Google">
 //
 // Copyright 2019 Google LLC. All Rights Reserved.
 //
@@ -21,12 +21,12 @@
 namespace Google.XR.ARCoreExtensions
 {
     /// <summary>
-    /// Describes the current state of a <see cref="ARCloudReferencePoint"/>.
+    /// Describes the current state of a <see cref="ARCloudAnchor"/>.
     /// </summary>
-    public enum CloudReferenceState
+    public enum CloudAnchorState
     {
         /// <summary>
-        /// The cloud reference point is not ready to use.
+        /// The cloud anchor is not ready to use.
         /// </summary>
         None,
 
