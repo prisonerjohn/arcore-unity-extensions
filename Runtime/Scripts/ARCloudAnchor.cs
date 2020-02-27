@@ -109,6 +109,17 @@ namespace Google.XR.ARCoreExtensions
         }
 
         /// <summary>
+        /// Gets the native <c>IntPtr</c> associated with this cloud anchor.
+        /// </summary>
+        public IntPtr nativePtr
+        {
+            get
+            {
+                return m_AnchorHandle;
+            }
+        }
+
+        /// <summary>
         /// Unity Update method.
         /// </summary>
         public void Update()
